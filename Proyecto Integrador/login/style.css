@@ -41,7 +41,7 @@ body {
 
 .login-promo {
     flex: 1;
-    background-image: url('pollo-fondo.jpg'); 
+    background-image: url('imagenes/pollo-fondo.jpg'); 
     background-size: cover;
     background-position: center;
     
@@ -233,4 +233,5 @@ body {
 
     .logo {
         font-size: 2.5rem;
+    }
 }
