@@ -1,0 +1,73 @@
+/* --- Estilos Generales de Encabezado (HEADER) --- */
+.header {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px 0;
+    border-bottom: 1px solid #eee; /* Línea suave debajo del header */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: #e74c3c; /* Color de marca para el logo */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre texto y emoji */
+}
+
+.nav-main a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    padding: 8px 15px;
+    transition: color 0.3s;
+}
+
+.nav-main a:hover {
+    color: #e74c3c; /* Color de marca al pasar el ratón */
+}
+
+/* Estilos para botones generales */
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.1s;
+    display: inline-block; /* Para que padding funcione correctamente */
+    text-align: center;
+    border: none; /* Añadido para consistencia */
+}
+
+.btn-primary {
+    background-color: #e74c3c; /* Color de marca */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #f39c12; /* Un color secundario, por ejemplo amarillo/naranja */
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #d3810f;
+}
+
+/* Asegúrate de que tu .container tenga un max-width y esté centrado */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Padding a los lados */
+}
+/* Agrega aquí cualquier otro estilo general de PaginaWeb.html */

@@ -1,0 +1,236 @@
+/* ========== CONFIGURACIÓN GENERAL Y VARIABLES ========== */
+
+/* Importación de fuentes desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;700&display=swap');
+
+
+:root {
+    --primary-orange: #FF8C00;
+    --text-dark: #1E1E1E;
+    --text-light: #FFFFFF;
+    --gray-background: #F8F9FA;
+    --gray-card: #E9ECEF;
+    --gray-border: #DEE2E6;
+    --google-blue: #4285F4;
+    --phone-green: #25D366;
+    --email-black: #212529;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--gray-background);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+
+.login-promo {
+    flex: 1;
+    background-image: url('pollo-fondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    padding: 40px;
+    text-align: left; 
+    position: relative;
+}
+
+
+.login-promo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+}
+
+.promo-content {
+    position: relative; 
+    z-index: 1;
+    color: var(--text-light);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.promo-title {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+}
+
+.promo-subtitle {
+    font-size: 1.1rem; /* 18px */
+    max-width: 400px;
+    margin-bottom: 1rem;
+    text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.promo-legal {
+    font-size: 0.75rem; /* 12px */
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+    color: var(--text-light);
+    margin-top: auto; 
+}
+
+/* COLUMNA DERECHA FORMULARIO */
+
+.login-form {
+    flex: 1; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    color: var(--primary-orange);
+    font-size: 3rem; /* 48px */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del formulario */
+    text-align: center;
+}
+
+.form-title {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    margin-bottom: 2rem;
+    color: #6c757d;
+}
+
+.login-card {
+    background-color: var(--gray-card);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+
+/* Estilos de los botones */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; 
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px); 
+}
+
+.btn-social {
+    color: var(--text-light);
+}
+
+.btn-google { background-color: var(--google-blue); }
+.btn-phone { background-color: var(--phone-green); }
+.btn-email { background-color: var(--email-black); }
+
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--gray-border);
+    margin: 1rem 0;
+}
+
+.btn-secondary {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    border: 1px solid var(--gray-border);
+}
+
+
+.google-logo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.telefono-logo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+.correo-logo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+
+.login-promo {
+    position: relative; 
+    isolation: isolate; 
+    
+  
+}
+
+
+
+
+@media (max-width: 992px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .login-promo {
+        min-height: 40vh; 
+    }
+
+    .login-form {
+        padding: 40px 20px;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+}
