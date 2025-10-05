@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Código</title>
+    <style>
+        /* Estilos generales (similares a la página anterior) */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 380px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #6c757d;
+            margin-bottom: 32px;
+        }
+        
+        /* Contenedor para los campos del código */
+        .code-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Espacio entre los campos */
+            margin-bottom: 24px;
+        }
+
+        /* Estilo de cada campo de entrada */
+        .code-input {
+            width: 45px;
+            height: 55px;
+            font-size: 24px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px; /* Bordes bien redondeados */
+            outline: none;
+            background-color: #f7f7f7;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        /* Estilo cuando el campo está enfocado */
+        .code-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #28a745; /* Verde para la verificación */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ingresa el código</h1>
+        <p>Enviamos un código de 6 dígitos a tu teléfono.</p>
+
+        <form id="formVerificar">
+            <div class="code-inputs" id="codeInputContainer">
+                <input type="tel" class="code-input" maxlength="1" required>
+                <input type="tel" class="code-input" maxlength="1" required>
+            </div>
+            <button type="submit">Verificar</button>
+        </form>
+    </div>
+
+    <script type="module" src="./js/verificar-codigo.js"></script>
+</body>
+</html>
