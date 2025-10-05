@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pollo Pollo - Bienvenido</title>
+    <title>Pollo Pollo - Iniciar Sesión con Correo</title>
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,33 +24,24 @@
         </section>
 
         <section class="login-form">
-            
             <div class="form-container">
                 <div class="logo">Pollo Express 🍗</div>
                 <h2 class="form-title">Bienvenido</h2>
-                <p class="form-subtitle">Regístrate o ingresa para continuar</p>
+                <p class="form-subtitle">Ingresa tus datos para continuar</p>
 
                 <div class="login-card">
-                    
-                   <a href="#" id="btnGoogleLogin" class="btn btn-social btn-google">
-                        <img src="imagenes/Google.png" alt="Google Logo" class="google-logo">
-                        <span>Continuar con Google</span>
-                    </a>
-                    
-                    <a href="#" id="btnTelefonoLogin" class="btn btn-social btn-phone">
-                        <img src="imagenes/Telefono.png" alt="Teléfono Logo" class="telefono-logo">
-                        <span>Continuar con Teléfono</span>
-                    </a>
-                      <a href="#" id="btnFacebookLogin" class="btn btn-social btn-facebook">
-                        <img src="imagenes/facebook.png" alt="Facebook Logo" class="facebook-logo">
-                        <span>Continuar con Facebook</span>
-                    </a>
-                    
+                    <div id="email-form-container">
+                        <input type="email" id="txtEmail" class="input-field" placeholder="Tu correo electrónico">
+                        <input type="password" id="txtPassword" class="input-field" placeholder="Tu contraseña (mín. 6 caracteres)">
+                        <button id="btnEmailLogin" class="btn btn-primary">Ingresar o Registrarse</button>
+                        <a href="index.html" class="btn btn-secondary">← Volver</a> </div>
                 </div>
             </div>
         </section>
 
     </main>
-      <script src="js/auth.js" type="module"></script>
+    
+    <script src="js/login-email-logic.js" type="module"></script>
+
 </body>
 </html>
