@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión por teléfono</title>
+    <script type="module" src="./js/telefono-login.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f2f2f2;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #recaptcha-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Verifica tu teléfono</h2>
+        <input type="tel" id="phoneNumber" placeholder="+52 123 456 7890" />
+        <div id="recaptcha-container"></div>
+        <button id="btnEnviarCodigo">Enviar código</button>
+
+        <div id="codigo-container" style="display:none;">
+            <input type="text" id="codigoVerificacion" placeholder="Código de 6 dígitos" />
+            <button id="btnVerificarCodigo">Verificar código</button>
+        </div>
+    </div>
+</body>
+</html>

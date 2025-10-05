@@ -1,0 +1,173 @@
+/* ================================================= */
+/* 🛒 Estilos de la Página del Carrito (cart.css)  */
+/* ================================================= */
+
+/* Contenedor principal de la página del carrito */
+.cart-page-container {
+    max-width: 900px; 
+    margin: 40px auto; 
+    padding: 30px; 
+    background-color: #ffffff;
+    border-radius: 12px; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.cart-page-container h1 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #e74c3c; 
+    font-size: 2.2em;
+    font-weight: 900; 
+    text-transform: uppercase;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+}
+
+/* Contenedor para la lista de ítems (Grid) */
+#cart-items-page.cart-items-list {
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #fcfcfc;
+}
+
+/* --- ESTILOS DE LOS ÍTEMS DEL CARRITO (Grid) --- */
+.cart-item-page {
+    /* Distribución de columnas (Detalles | Cantidad | Precio | Eliminar) */
+    /* 🔑 Ajuste clave para el problema "mocho": Más espacio para los detalles */
+    grid-template-columns: 3fr 120px 100px 40px; 
+    display: grid; 
+    gap: 20px;
+    align-items: center;
+    padding: 15px 20px; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-page:last-child {
+    border-bottom: none;
+}
+
+.item-details h4 {
+    margin: 0;
+    font-size: 1.15em;
+    color: #333;
+    font-weight: 700;
+}
+
+.item-details p {
+    margin: 2px 0 0;
+    color: #999;
+    font-size: 0.85em;
+}
+
+/* Controles de cantidad: Botones e input/span de número */
+.item-quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    height: 35px; 
+    width: 100px;
+    margin: 0 auto; /* Centrado en su columna */
+}
+
+.item-quantity-controls button {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #e74c3c; 
+}
+
+.item-quantity-controls span {
+    font-weight: 700;
+}
+
+/* Precio individual del producto */
+.item-price-page {
+    font-weight: 900;
+    color: #e74c3c; 
+    text-align: right;
+    font-size: 1.1em;
+}
+
+/* Botón de eliminar producto */
+.remove-item-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999; 
+    font-size: 1.2em;
+    justify-self: center; 
+}
+
+/* --- PIE DE PÁGINA DEL CARRITO (Total y Checkout) --- */
+.cart-footer {
+    padding: 30px 20px;
+    border-top: 1px solid #ddd; 
+    text-align: right;
+    margin-top: 20px;
+    background-color: #ffffff; 
+    border-radius: 0 0 12px 12px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    font-size: 1.6em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+#cart-total-price-page {
+    color: #e74c3c; 
+}
+
+.btn-checkout {
+    display: block;
+    width: 100%;
+    max-width: 300px; 
+    margin-left: auto; 
+    padding: 15px;
+    font-size: 1.2em;
+}
+
+/* --- RESPONSIVE / AJUSTES PARA MÓVILES --- */
+@media (max-width: 768px) {
+    .cart-page-container {
+        margin: 20px 10px;
+        padding: 20px 15px; 
+    }
+    
+    .cart-item-page {
+        display: flex; 
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px; 
+        gap: 5px;
+    }
+
+    .item-details { width: 100%; }
+    
+    .item-quantity-controls { 
+        width: 100px; 
+        margin: 10px 0;
+    }
+    
+    .item-price-page { 
+        align-self: flex-end;
+        margin-top: -30px; 
+    }
+    
+    .remove-item-btn { 
+        align-self: flex-end;
+        margin-top: -20px;
+    }
+}
