@@ -5,7 +5,7 @@
 .checkout-page-container {
     padding: 30px 0;
     width: 90%;
-    max-width: 1200px; /* Ancho máximo similar al que se ve */
+    max-width: 1200px;
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
 }
@@ -13,8 +13,18 @@
 /* Estructura de Columnas (Desktop) */
 .checkout-container {
     display: grid;
-    grid-template-columns: 2fr 1.3fr; /* La columna izquierda es más ancha que la derecha */
+    grid-template-columns: 2fr 1.3fr; 
     gap: 30px;
+}
+
+/* El botón de Volver en el Header */
+.nav-volver {
+    color: #333; /* Color oscuro para el texto "Volver" */
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
 /* Las "tarjetas" que contienen la información */
@@ -23,7 +33,7 @@
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #e0e0e0; /* Borde más suave */
+    border: 1px solid #e0e0e0;
 }
 
 /* Títulos y Botones de Cambio */
@@ -43,10 +53,11 @@
 .btn-change, .btn-add {
     background: none;
     border: none;
-    color: #E20023; /* Color primario Rappi-like */
+    color: #E20023; /* Rojo Rappi-like */
     font-weight: 700;
     cursor: pointer;
     font-size: 0.9rem;
+    padding: 0;
 }
 
 /* --- SECCIÓN DIRECCIÓN Y PAGO --- */
@@ -73,7 +84,6 @@
 
 /* --- SECCIÓN RESUMEN DE PRODUCTOS --- */
 .product-summary {
-    /* Menos padding para esta sección para que se vea más compacta */
     padding: 15px 20px; 
 }
 
@@ -88,10 +98,14 @@
 }
 
 #cart-items-summary {
-    /* Aquí se ve un listado simplificado de los productos */
     font-size: 0.9rem;
     color: #555;
     margin-bottom: 15px;
+}
+
+.summary-product-line {
+    display: block;
+    margin-bottom: 5px;
 }
 
 .estimated-delivery {
@@ -108,6 +122,7 @@
     display: flex;
     align-items: center;
     padding: 10px 0;
+    cursor: pointer; 
 }
 
 .payment-option .payment-icon {
@@ -116,8 +131,7 @@
 }
 
 .payment-option.selected {
-    /* Para simular la línea verde */
-    border-left: 3px solid #1abc9c; 
+    border-left: 3px solid #1abc9c; /* Línea verde */
     padding-left: 17px;
     font-weight: 700;
 }
@@ -148,18 +162,19 @@
     background: #fff;
     cursor: pointer;
     font-weight: 600;
+    transition: all 0.2s;
 }
 
 .tip-btn.selected {
-    background: #F0F0F0; /* Fondo gris claro */
-    border-color: #E20023; /* Borde rojo */
+    background: #F0F0F0;
+    border-color: #E20023;
     color: #E20023;
 }
 
 /* --- COLUMNA DERECHA: RESUMEN DE COSTOS --- */
 
 .summary-card {
-    position: sticky; /* Fija la tarjeta de resumen al hacer scroll */
+    position: sticky; 
     top: 30px; 
 }
 
@@ -174,6 +189,10 @@
     margin-bottom: 10px;
     font-size: 0.95rem;
     color: #555;
+}
+
+.tip-line.hidden {
+    display: none;
 }
 
 .total-line {
@@ -198,7 +217,7 @@
 /* Botón Final */
 .btn-checkout-final {
     width: 100%;
-    background: #1abc9c; /* Color verde dominante de Rappi */
+    background: #1abc9c; 
     color: white;
     padding: 15px 0;
     font-size: 1.1rem;
@@ -206,14 +225,260 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-checkout-final:disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+}
+
+/* --- ESTILOS DEL MODAL DE CARRITO (NUEVO) --- */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.cart-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 550px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    transition: transform 0.3s;
+    max-height: 80vh;
+    overflow-y: auto; /* Permite scroll si hay muchos productos */
+}
+
+.modal-overlay.active .cart-modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Estilos de los ítems dentro del modal */
+.modal-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.item-info {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+.item-price-unit {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.item-price-total {
+    font-size: 1rem;
+    color: #E20023;
+    font-weight: 700;
+    flex-basis: 20%;
+    text-align: right;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-basis: 40%;
+    justify-content: flex-end;
+}
+
+.btn-qty {
+    width: 25px;
+    height: 25px;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-quantity {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: #E20023;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0 5px;
+}
+
+.cart-modal-footer {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+    text-align: right;
+}
+
+.cart-modal-footer p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+#cart-modal-confirm {
+    background-color: #1abc9c;
+}
+/* ... (El resto del CSS es el mismo) ... */
+/* --- ESTILOS DEL MODAL DE CARRITO --- */
+
+/* ... (Otros estilos del modal) ... */
+
+/* Estilos de los ítems dentro del modal */
+.modal-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.item-info {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Para posicionar el prefijo de cantidad */
+    padding-left: 30px; /* Espacio para el prefijo */
+}
+
+/* Estilo para el número de cantidad grande a la izquierda */
+.item-quantity-prefix {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    font-size: 1.2rem; /* Tamaño grande */
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.item-name {
+    font-weight: 700;
+    font-size: 1rem;
+}
+.item-price-unit {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.item-price-total {
+    font-size: 1rem;
+    color: #E20023; /* Rojo */
+    font-weight: 700;
+    flex-basis: 20%; 
+    text-align: right;
+    min-width: 60px; /* Asegura que haya espacio para el precio */
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-basis: 40%;
+    justify-content: flex-end;
+}
+
+.btn-qty {
+    /* ... (Estilo existente) ... */
+    width: 25px;
+    height: 25px;
+}
+
+.item-quantity-display {
+    /* Muestra la cantidad dentro del control (+ 1 -) */
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.btn-remove {
+    /* ... (Estilo existente) ... */
 }
 
 /* Diseño responsivo para móviles */
 @media (max-width: 768px) {
-    .checkout-container {
-        grid-template-columns: 1fr; /* Una sola columna en móviles */
+    /* ... (Estilos responsivos del checkout son los mismos) ... */
+    
+    .item-info {
+        flex-basis: 60%; /* Más espacio para la info en móvil */
+        margin-bottom: 5px;
     }
-    .summary-card {
-        position: static; /* No fijo en móvil */
+    .item-controls {
+        flex-basis: 40%; /* Más compacto */
+        justify-content: space-between;
+    }
+    .item-price-total {
+        /* Mantenemos el precio total visible en el control de móvil o se puede reajustar */
+        display: none; 
+    }
+    .btn-remove {
+        /* Para que solo muestre el ícono en móvil, no el texto */
+        font-size: 1.2rem;
+        padding: 0 5px;
+        font-weight: normal;
     }
 }
+

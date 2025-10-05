@@ -1,9 +1,76 @@
-/* --- Estilos Generales de Encabezado (HEADER) --- */
+/* ========================================= */
+/* --- ESTILOS GENERALES Y LAYOUT --- */
+/* ========================================= */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Fondo general suave */
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Padding a los lados */
+}
+
+/* ========================================= */
+/* --- ESTILOS DE BOTONES (GLOBAL) --- */
+/* ========================================= */
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px; /* Bordes más suaves */
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botón Principal (Iniciar Sesión o Acción Primaria) - Rojo Fuerte */
+.btn-primary {
+    background-color: #E20023; /* Rojo de Pollo Express / Acciones importantes */
+    color: white;
+    box-shadow: 0 3px 6px rgba(226, 0, 35, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #B8001D; /* Rojo oscuro al pasar el ratón */
+    transform: translateY(-1px); /* Efecto 3D sutil */
+    box-shadow: 0 5px 10px rgba(226, 0, 35, 0.4);
+}
+
+/* Botón Secundario (Si aplica) */
+.btn-secondary {
+    background-color: transparent;
+    color: #E20023;
+    border: 2px solid #E20023;
+}
+
+.btn-secondary:hover {
+    background-color: #F8F8F8;
+    color: #B8001D;
+    transform: translateY(-1px);
+}
+
+
+/* ========================================= */
+/* --- ESTILOS DEL ENCABEZADO (HEADER) --- */
+/* ========================================= */
+
 .header {
-    background-color: #fff; /* Fondo blanco */
-    padding: 20px 0;
-    border-bottom: 1px solid #eee; /* Línea suave debajo del header */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background-color: #fff; 
+    padding: 15px 0; /* Padding ligeramente reducido */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra más definida */
+    position: sticky; /* Sticky para que se quede arriba */
+    top: 0;
+    z-index: 50; /* Asegura que esté por encima de otros elementos */
 }
 
 .header .container {
@@ -13,61 +80,109 @@
 }
 
 .logo {
-    font-size: 1.8em;
+    /* Estilo basado en tus imágenes */
+    font-size: 2em; 
     font-weight: 900;
-    color: #e74c3c; /* Color de marca para el logo */
+    color: #E20023; /* Rojo de Pollo Express */
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px; /* Espacio entre texto y emoji */
+    gap: 8px; 
+    letter-spacing: -1px; /* Para un look más compacto y moderno */
+}
+
+/* El pollo emoji, para ajustar su tamaño */
+.logo span {
+    font-size: 1.2em; 
+}
+
+.nav-main {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Más espacio entre los enlaces */
 }
 
 .nav-main a {
     text-decoration: none;
     color: #333;
-    font-weight: 700;
-    padding: 8px 15px;
+    font-weight: 600; /* Menos negrita para los links de navegación */
+    padding: 5px 0;
+    position: relative;
     transition: color 0.3s;
 }
 
 .nav-main a:hover {
-    color: #e74c3c; /* Color de marca al pasar el ratón */
+    color: #E20023; 
 }
 
-/* Estilos para botones generales */
-.btn {
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
+/* Efecto de subrayado sutil al pasar el ratón */
+.nav-main a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #E20023;
+    border-radius: 2px;
+}
+
+/* Estilo para los iconos de perfil (si existen, como la 'H' o la 'b') */
+.profile-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #1abc9c; /* Color turquesa de ejemplo, usa el que prefieras */
+    color: white;
+    font-size: 1.1em;
     font-weight: 700;
-    transition: background-color 0.3s, transform 0.1s;
-    display: inline-block; /* Para que padding funcione correctamente */
-    text-align: center;
-    border: none; /* Añadido para consistencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #1abc9c; /* Borde doble */
 }
 
-.btn-primary {
-    background-color: #e74c3c; /* Color de marca */
-    color: white;
+/* ========================================= */
+/* --- ESTILOS ESPECÍFICOS PARA EL CHECKOUT (HEADER) --- */
+/* ========================================= */
+
+/* Sobrescribe el estilo general del header para ser más minimalista en el checkout */
+.checkout-page-container .header {
+    padding: 18px 0; /* Un poco más de padding vertical */
+    border-bottom: 2px solid #f0f0f0; /* Línea más gruesa y sutil para separar */
+    box-shadow: none; /* Quitamos la sombra para un look más plano/limpio */
 }
 
-.btn-primary:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
+.checkout-page-container .header .logo {
+    /* Mantenemos el logo grande y rojo */
+    font-size: 2.2em; 
+    color: #E20023; 
 }
 
-.btn-secondary {
-    background-color: #f39c12; /* Un color secundario, por ejemplo amarillo/naranja */
-    color: white;
-}
-.btn-secondary:hover {
-    background-color: #d3810f;
+/* ---------------------------------------------------- */
+/* ESTILO DEL BOTÓN "← VOLVER" (nav-link nav-volver) */
+/* ---------------------------------------------------- */
+
+.nav-main .nav-volver {
+    /* Quitamos el padding extra de los otros links de navegación */
+    padding: 0;
+    
+    color: #666; /* Un color gris oscuro, elegante y discreto */
+    font-size: 1.05rem; 
+    font-weight: 600; 
+    text-decoration: none;
+    
+    /* Efecto de transición para el hover */
+    transition: color 0.2s, transform 0.2s;
 }
 
-/* Asegúrate de que tu .container tenga un max-width y esté centrado */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Padding a los lados */
+.nav-main .nav-volver:hover {
+    color: #333; /* Se oscurece al pasar el ratón */
+    transform: translateX(-3px); /* Movimiento sutil hacia la izquierda */
 }
-/* Agrega aquí cualquier otro estilo general de PaginaWeb.html */
+
+/* Quitamos el subrayado sutil que se aplica a otros links en el header general */
+.nav-main .nav-volver:hover::after {
+    content: none !important; 
+}
