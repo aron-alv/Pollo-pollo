@@ -8,27 +8,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body id="body">
-    <header class="header">
-        <div class="container">
-            <a href="#" class="logo">
-                Pollo Express 🍗
-            </a>
-            <nav class="nav-main">
-                <a href="#menu">Menú</a>
-                <a href="#seguimiento">Sigue tu Pedido</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="login/inicodesesion.html" class="btn btn-secondary">
+    
+<header class="header">
+    <div class="container">
+        <a href="#" class="logo">
+            Pollo Express 🍗
+        </a>
+
+        <nav class="nav-main">
+            <a href="#menu">Menú</a>
+            <a href="#seguimiento">Sigue tu Pedido</a>
+            <a href="#nosotros">Nosotros</a>
+            
+            <div id="auth-ui-container">
+                
+                <a href="login/inicodesesion.html" id="login-link" class="btn btn-secondary">
                     Iniciar Sesión 
                 </a>
-            </nav>
-        </div>
-    </header>
+
+                <div id="user-profile-info" class="user-profile-info" style="display: none;"> 
+                    <div class="user-avatar" id="user-avatar-placeholder"></div>
+                </div>
+                
+                <div id="profile-dropdown" class="profile-dropdown">
+                    
+                    <p id="dropdown-welcome"></p> 
+                    <p id="dropdown-email"></p>
+                    
+                    <div id="manage-account-container"></div>
+                    
+                    <button id="logout-btn">Cerrar Sesión</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>El sabor que te encanta, entregado en minutos.</h1>
-                <p>Pollo asado, rostizado, papas, etc. ¿Qué esperas?</p>
+               <h1>El sabor que te encanta, entregado en minutos.</h1>
+                <p>¿Poco tiempo para cocinar? No te preocupes. Te llevamos a tu puerta nuestro delicioso pollo asado o rostizado, acompañado de papas, frijoles, tortillas y todo lo que necesitas para una comida completa y sin complicaciones. ¡Ordena ahora y disfruta en casa o en la oficina!</p>
                 <a href="#menu" class="btn btn-primary">¡Pide tu Pollo Ahora!</a>
             </div>
         </section>
@@ -134,10 +154,13 @@
         </div>
         <div id="menu-detail-pollo" style="display: none;">
             <h3>Menú Principal</h3>
-            <div class="modal-item"><div class="item-info"><h4>1 Pollo Asado Completo</h4><p>Incluye 2 frijoles charros, salsa y tortillas.</p></div><span class="item-price">$210.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>1 Pollo Asado Completo</h4><p>Incluye frijoles charros, salsa y tortillas.</p></div><span class="item-price">$210.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
             <div class="modal-item"><div class="item-info"><h4>1 Pollo Rostizado Completo</h4><p>Incluye frijoles charros, papas, ensalada de repollo y tortillas.</p></div><span class="item-price">$230.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
             <div class="modal-item"><div class="item-info"><h4>1/2 Pollo Asado</h4><p>Porción individual con frijoles charros, salsa y tortillas.</p></div><span class="item-price">$110.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
-            <div class="modal-item"><div class="item-info"><h4>Orden de Nuggets (12 pzas)</h4><p>Nuggets de pollo crujientes con tu salsa favorita.</p></div><span class="item-price">$75.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>1/2 Pollo Rostizado</h4><p>Porción individual con frijoles charros, papas, ensalada de repollo y tortillas.</p></div><span class="item-price">$120.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>Orden de Nuggets (12 pzas)</h4><p>Nuggets de pollo crujientes con tu salsa favorita.</p></div><span class="item-price">$80.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>Orden de Papas a la Francesa</h4><p>Papas fritas crujientes con tu salsa favorita.</p></div><span class="item-price">$50.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>Sopa de tortillas</h4><p>Sopa caliente de tortillas con pollo y especias.</p></div><span class="item-price">$80.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
         </div>
         <div id="menu-detail-extras" style="display: none;">
             <h3>Extras y Acompañamientos</h3>
@@ -146,8 +169,12 @@
         </div>
         <div id="menu-detail-ensaladas" style="display: none;">
             <h3>Ensaladas y Sopas Frías</h3>
+            <div class="modal-item"><div class="item-info"><h4>Ensalada de Verdura (Grande)</h4><p>Ensalada fresca de lechuga y tomate.</p></div><span class="item-price">$35.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
             <div class="modal-item"><div class="item-info"><h4>Ensalada de Verdura (Chica)</h4><p>Ensalada fresca de lechuga y tomate.</p></div><span class="item-price">$35.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
-            <div class="modal-item"><div class="item-info"><h4>Ensalada de Pollo</h4><p>Pollo deshebrado, mayonesa, verduras y especias.</p></div><span class="item-price">$70.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>Ensalada de Pollo</h4><p>Pollo deshebrado, mayonesa, verduras y especias.</p></div><span class="item-price">80.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>Sopa Fría</h4><p>Crema fría de codito, servida con crema fresca y un toque de hierbas.</p></div><span class="item-price">$4.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+            <div class="modal-item"><div class="item-info"><h4>Ensalada de repollo</h4><p>Repollo crujiente rallado con zanahoria y aderezo ligero, ideal como acompañamiento fresco.</p></div><span class="item-price">$30.00</span><button class="btn btn-secondary">Añadir al Carrito</button></div>
+
         </div>
         <div id="menu-detail-bebidas" style="display: none;">
             <h3>Bebidas Refrescantes</h3>
@@ -156,7 +183,15 @@
         </div>
     </div>
     
- <script>
+ <script type="module">
+    import { auth } from './login/js/firebase-config.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
+    // Seguimiento del usuario autenticado en esta página
+    let currentUser = null;
+    onAuthStateChanged(auth, (user) => {
+        currentUser = user;
+    });
     // =================================================================
     // 1. LÓGICA DEL CARRITO (Definiciones Globales)
     // Estas funciones deben estar definidas ANTES de DOMContentLoaded.
@@ -228,6 +263,12 @@
                 
                 // Lógica Añadir al Carrito
                 if (clickedElement.classList.contains('btn-secondary') && targetText === 'Añadir al Carrito') {
+                    // Si no hay usuario autenticado, redirigir al login
+                    if (!currentUser) {
+                        alert('Debes iniciar sesión para añadir productos al carrito. Serás redirigido al inicio de sesión.');
+                        window.location.href = 'login/inicodesesion.html';
+                        return; // evitar añadir al carrito
+                    }
                     
                     const modalItem = clickedElement.closest('.modal-item');
                     if (!modalItem) return;
@@ -289,5 +330,6 @@
         updateCartBadge();
     });
 </script>
+<script src="js/main-auth.js" type="module"></script>
 </body>
 </html>

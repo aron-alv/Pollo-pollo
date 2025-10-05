@@ -22,9 +22,15 @@ body { font-family: var(--font-family); line-height: 1.6; background-color: #fff
 
 /* --- Header --- */
 .header { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; width: 100%; z-index: 1000; transition: all 0.3s ease-in-out; }
-.header .container { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px; transition: all 0.3s ease-in-out; }
-.logo { font-size: 1.8rem; font-weight: 900; color: var(--secondary-color); text-decoration: none; transition: font-size 0.3s ease-in-out; }
-.nav-main { display: flex; align-items: center; }
+.header .container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 20px; 
+    transition: all 0.3s ease-in-out; 
+}
+.logo { font-size: 3rem; font-weight: 900; color: var(--secondary-color); text-decoration: none; transition: font-size 0.3s ease-in-out; }
+.nav-main { display: flex; align-items: center; margin-left: auto; }
 .nav-main a { color: var(--dark-color); text-decoration: none; margin: 0 15px; font-weight: 700; transition: color 0.3s ease; }
 .nav-main a:hover { color: var(--secondary-color); }
 .nav-main .btn { margin-left: 25px; color: #fff; }
@@ -34,8 +40,21 @@ body { font-family: var(--font-family); line-height: 1.6; background-color: #fff
 .scrolled .logo { font-size: 1.5rem; }
 
 /* --- Hero Section --- */
-.hero { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/hero-background.jpg) no-repeat center center/cover; height: 90vh; color: #fff; display: flex; justify-content: center; align-items: center; text-align: center; }
-.hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; }
+/* --- Hero Section --- */
+.hero { 
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/hero-background.jpg) no-repeat center center/cover; 
+    height: 90vh; 
+    color: #fff; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    
+    /* APLICACIÓN DE FUERZA: Le asignamos una posición relativa con un z-index bajo, 
+       sólo si es necesario, para forzarlo a su propia capa, pero abajo. */
+    position: relative; 
+    z-index: 1; /* Esto le da un contexto de apilamiento por debajo del header (10000) */
+}.hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; }
 .hero p { font-size: 1.2rem; margin-bottom: 30px; }
 
 /* --- Menu Section --- */
@@ -55,8 +74,13 @@ body { font-family: var(--font-family); line-height: 1.6; background-color: #fff
 .modal-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
 .item-info h4 { margin: 0; font-size: 1.2rem; }
 .item-info p { margin: 5px 0 0; font-size: 0.9rem; color: #555; }
-.item-price { font-weight: 900; color: var(--secondary-color); min-width: 80px; text-align: right; }
-.close-btn { position: absolute; top: 10px; right: 20px; font-size: 2rem; cursor: pointer; color: var(--dark-color); }
+.item-price {
+    font-weight: 900;
+    color: var(--secondary-color);
+    min-width: 80px;
+    text-align: right;
+    margin-right: 15px; 
+}.close-btn { position: absolute; top: 10px; right: 20px; font-size: 2rem; cursor: pointer; color: var(--dark-color); }
 
 /* --- Sección Nosotros y Seguimiento --- */
 .about-us { display: flex; gap: 50px; align-items: center; }
@@ -94,6 +118,167 @@ body { font-family: var(--font-family); line-height: 1.6; background-color: #fff
 .cart-badge { position: absolute; top: -2px; right: -2px; background-color: var(--secondary-color); color: #fff; width: 24px; height: 24px; border-radius: 50%; font-size: 0.8rem; font-weight: 700; display: flex; justify-content: center; align-items: center; border: 2px solid #fff; transform: scale(0); transition: transform 0.2s ease-in-out; }
 .cart-btn.active .cart-badge { transform: scale(1); }
 
+
+/* Contenedor principal de autenticación */
+#auth-ui-container {
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    margin-left: 25px; 
+    min-width: 40px; 
+    height: 40px;
+}
+
+/* Estilos del Avatar */
+.user-profile-info {
+    display: flex; 
+    align-items: center;
+    cursor: pointer;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Estilo del círculo del avatar */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary-color); /* Rojo Pollo Express */
+    color: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    overflow: hidden; 
+    border: 2px solid white; /* Borde blanco para destacarlo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    transition: transform 0.2s ease; /* Efecto al pasar el ratón */
+}
+
+.user-profile-info:hover .user-avatar {
+    transform: scale(1.05);
+}
+
+/* ESTILOS DEL MENÚ DESPLEGABLE */
+#profile-dropdown {
+    position: absolute;
+    top: 55px; 
+    right: 0; 
+    width: 280px; /* Más ancho */
+    background-color: #ffffff; /* Blanco */
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    border-radius: 12px; /* Esquinas más redondeadas */
+    z-index: 10001; /* Mayor que el header */
+    padding: 18px 25px; /* Más padding interno */
+    display: none; 
+    opacity: 0; /* Para animación de entrada */
+    transform: translateY(-10px); /* Para animación de entrada */
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* Clave para animación: el JS añade esta clase */
+#profile-dropdown.open {
+    display: block; 
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+/* --- ESTILOS DE LOS ELEMENTOS DENTRO DEL MENÚ --- */
+
+/* Estilos para el mensaje de bienvenida */
+#dropdown-welcome {
+    font-size: 1.1rem;
+    font-weight: 700; 
+    color: var(--dark-color); 
+    margin-bottom: 5px; 
+}
+
+/* Estilos para el correo electrónico en el menú */
+#dropdown-email {
+    font-size: 0.95rem;
+    color: #555555;
+    margin-bottom: 15px; /* Más espacio debajo */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    padding-bottom: 10px; 
+    border-bottom: 1px solid #f0f0f0; /* Separador sutil */
+}
+
+/* Estilos para el botón de Cerrar Sesión */
+#logout-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--secondary-color); /* Rojo Pollo Express */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px; 
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; 
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#logout-btn:hover {
+    background-color: #e00040; 
+    transform: translateY(-1px); 
+}
+
+/* CSS Corregido (Asegura la alineación Logo-Izquierda, Menú-Derecha) */
+.header .container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 20px; 
+    transition: all 0.3s ease-in-out;
+    
+    /* CRÍTICO: Asegura que el contenedor de la navegación no se salga */
+    overflow: visible; /* Debe ser visible para que el menú desplegable se muestre */
+}
+
+/* El nav-main debe ser el contenedor flexible a la derecha */
+.nav-main { 
+    display: flex; 
+    align-items: center; 
+    margin-left: auto; /* Empuja el nav a la derecha */
+    /* CRÍTICO: Asegura que el contenido no se salga de esta área */
+    overflow: visible; 
+}
+/* Estilos para el contenedor del botón de gestión de cuenta */
+#manage-account-container {
+    margin-top: 10px; /* Espacio superior */
+    margin-bottom: 10px; /* Espacio inferior */
+    text-align: center; /* Centrar el botón si es necesario */
+    padding-bottom: 10px; /* Un poco de padding abajo */
+    border-bottom: 1px solid #f0f0f0; /* Separador */
+}
+
+/* Estilos para el botón "Gestionar cuenta de Google" */
+.btn-manage-account {
+    display: inline-block; /* O 'block' si quieres que ocupe todo el ancho */
+    padding: 8px 15px;
+    background-color: transparent; /* Fondo transparente */
+    color: var(--secondary-color); /* Rojo de Pollo Express */
+    border: 1px solid var(--secondary-color); /* Borde del mismo color */
+    border-radius: 6px; /* Esquinas ligeramente redondeadas */
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-manage-account:hover {
+    background-color: var(--secondary-color); /* Fondo rojo al pasar el ratón */
+    color: #ffffff; /* Letra blanca al pasar el ratón */
+    transform: translateY(-1px);
+}
 /* --- Media Queries (Responsive) --- */
 @media (max-width: 768px) {
     /* ... (tus media queries existentes) ... */
