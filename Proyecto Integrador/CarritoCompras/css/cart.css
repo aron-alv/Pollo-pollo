@@ -1,173 +1,219 @@
-/* ================================================= */
-/* 🛒 Estilos de la Página del Carrito (cart.css)  */
-/* ================================================= */
+/* ========================================= */
+/* ESTILOS ESPECÍFICOS PARA LA PÁGINA DE CHECKOUT (Carrito.html) */
+/* ========================================= */
 
-/* Contenedor principal de la página del carrito */
-.cart-page-container {
-    max-width: 900px; 
-    margin: 40px auto; 
-    padding: 30px; 
-    background-color: #ffffff;
-    border-radius: 12px; 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+.checkout-page-container {
+    padding: 30px 0;
+    width: 90%;
+    max-width: 1200px; /* Ancho máximo similar al que se ve */
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.cart-page-container h1 {
-    text-align: center;
-    margin-bottom: 35px;
-    color: #e74c3c; 
-    font-size: 2.2em;
-    font-weight: 900; 
-    text-transform: uppercase;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    gap: 10px; 
+/* Estructura de Columnas (Desktop) */
+.checkout-container {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr; /* La columna izquierda es más ancha que la derecha */
+    gap: 30px;
 }
 
-/* Contenedor para la lista de ítems (Grid) */
-#cart-items-page.cart-items-list {
-    border: 1px solid #ddd; 
+/* Las "tarjetas" que contienen la información */
+.checkout-card {
+    background: #fff;
     border-radius: 8px;
-    overflow: hidden; 
-    background-color: #fcfcfc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0; /* Borde más suave */
 }
 
-/* --- ESTILOS DE LOS ÍTEMS DEL CARRITO (Grid) --- */
-.cart-item-page {
-    /* Distribución de columnas (Detalles | Cantidad | Precio | Eliminar) */
-    /* 🔑 Ajuste clave para el problema "mocho": Más espacio para los detalles */
-    grid-template-columns: 3fr 120px 100px 40px; 
-    display: grid; 
-    gap: 20px;
+/* Títulos y Botones de Cambio */
+.card-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-header h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.btn-change, .btn-add {
+    background: none;
+    border: none;
+    color: #E20023; /* Color primario Rappi-like */
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* --- SECCIÓN DIRECCIÓN Y PAGO --- */
+
+.delivery-address {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* --- SECCIÓN RESUMEN DE PRODUCTOS --- */
+.product-summary {
+    /* Menos padding para esta sección para que se vea más compacta */
     padding: 15px 20px; 
-    background-color: #ffffff;
+}
+
+.card-item-summary {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
 
-.cart-item-page:last-child {
-    border-bottom: none;
+#cart-items-summary {
+    /* Aquí se ve un listado simplificado de los productos */
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
 }
 
-.item-details h4 {
-    margin: 0;
-    font-size: 1.15em;
-    color: #333;
-    font-weight: 700;
+.estimated-delivery {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
 }
 
-.item-details p {
-    margin: 2px 0 0;
-    color: #999;
-    font-size: 0.85em;
-}
+/* --- SECCIÓN MÉTODO DE PAGO --- */
 
-/* Controles de cantidad: Botones e input/span de número */
-.item-quantity-controls {
+.payment-option {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ccc; 
-    border-radius: 4px;
-    height: 35px; 
-    width: 100px;
-    margin: 0 auto; /* Centrado en su columna */
+    padding: 10px 0;
 }
 
-.item-quantity-controls button {
-    background: none;
-    border: none;
-    padding: 0 10px;
-    cursor: pointer;
-    font-size: 1.2em;
-    color: #e74c3c; 
+.payment-option .payment-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
 }
 
-.item-quantity-controls span {
+.payment-option.selected {
+    /* Para simular la línea verde */
+    border-left: 3px solid #1abc9c; 
+    padding-left: 17px;
     font-weight: 700;
 }
 
-/* Precio individual del producto */
-.item-price-page {
-    font-weight: 900;
-    color: #e74c3c; 
-    text-align: right;
-    font-size: 1.1em;
-}
+/* --- SECCIÓN CUPÓN Y PROPINA --- */
 
-/* Botón de eliminar producto */
-.remove-item-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #999; 
-    font-size: 1.2em;
-    justify-self: center; 
-}
-
-/* --- PIE DE PÁGINA DEL CARRITO (Total y Checkout) --- */
-.cart-footer {
-    padding: 30px 20px;
-    border-top: 1px solid #ddd; 
-    text-align: right;
+.tip-section {
     margin-top: 20px;
-    background-color: #ffffff; 
-    border-radius: 0 0 12px 12px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
 }
 
-.cart-total {
+.tip-note {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.tip-options {
     display: flex;
-    justify-content: flex-end; 
-    align-items: center;
-    font-size: 1.6em;
+    gap: 10px;
+}
+
+.tip-btn {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tip-btn.selected {
+    background: #F0F0F0; /* Fondo gris claro */
+    border-color: #E20023; /* Borde rojo */
+    color: #E20023;
+}
+
+/* --- COLUMNA DERECHA: RESUMEN DE COSTOS --- */
+
+.summary-card {
+    position: sticky; /* Fija la tarjeta de resumen al hacer scroll */
+    top: 30px; 
+}
+
+.summary-details {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.total-line {
+    font-size: 1.2rem;
     font-weight: 900;
-    margin-bottom: 20px;
-    gap: 20px;
+    color: #333;
+    margin-top: 15px;
 }
 
-#cart-total-price-page {
-    color: #e74c3c; 
+.cost-note {
+    font-size: 0.8rem;
+    text-align: right;
+    margin-top: -5px;
+    margin-bottom: 15px;
 }
 
-.btn-checkout {
-    display: block;
+.cost-note a {
+    color: #E20023;
+    text-decoration: none;
+}
+
+/* Botón Final */
+.btn-checkout-final {
     width: 100%;
-    max-width: 300px; 
-    margin-left: auto; 
-    padding: 15px;
-    font-size: 1.2em;
+    background: #1abc9c; /* Color verde dominante de Rappi */
+    color: white;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-/* --- RESPONSIVE / AJUSTES PARA MÓVILES --- */
+/* Diseño responsivo para móviles */
 @media (max-width: 768px) {
-    .cart-page-container {
-        margin: 20px 10px;
-        padding: 20px 15px; 
+    .checkout-container {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
     }
-    
-    .cart-item-page {
-        display: flex; 
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px; 
-        gap: 5px;
-    }
-
-    .item-details { width: 100%; }
-    
-    .item-quantity-controls { 
-        width: 100px; 
-        margin: 10px 0;
-    }
-    
-    .item-price-page { 
-        align-self: flex-end;
-        margin-top: -30px; 
-    }
-    
-    .remove-item-btn { 
-        align-self: flex-end;
-        margin-top: -20px;
+    .summary-card {
+        position: static; /* No fijo en móvil */
     }
 }

@@ -1,102 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 🔑 CLAVE: Verificación de IDs
-    const cartItemsContainer = document.getElementById('cart-items-page');
-    const cartFooter = document.getElementById('cart-footer-page');
-    const cartTotalPriceEl = document.getElementById('cart-total-price-page');
+// ... todo tu código JS anterior hasta la función renderCart ...
 
-    // Si alguno de los elementos críticos no existe, detenemos la ejecución.
-    if (!cartItemsContainer || !cartFooter || !cartTotalPriceEl) {
-        console.error("ERROR CRÍTICO: No se encontraron todos los IDs necesarios en el HTML (cart-items-page, cart-footer-page, cart-total-price-page). Revisa tu HTML.");
-        return; 
+// Función principal para dibujar/renderizar el carrito en la página (VERSION CHECKOUT)
+const renderCart = () => {
+    // 🔑 Nuevos IDs para la página de resumen
+    const cartItemsSummaryEl = document.getElementById('cart-items-summary');
+    const summaryProductsCostEl = document.getElementById('summary-products-cost');
+    const summaryTotalPriceEl = document.getElementById('summary-total-price');
+
+    if (!cartItemsSummaryEl || !summaryProductsCostEl || !summaryTotalPriceEl) {
+        // Esto previene errores si los IDs no existen en el HTML
+        console.error("ERROR CRÍTICO: Faltan IDs de resumen en el HTML (summary-products-cost, summary-total-price, cart-items-summary).");
+        return;
     }
 
-    // Carga el carrito desde localStorage
-    let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    cartItemsSummaryEl.innerHTML = ''; // Limpia la vista de productos
 
-    // Función dummy para el badge (el badge se actualiza realmente en PaginaWeb.html)
-    const updateCartBadge = () => {
-        // console.log('Badge actualizado desde la página de carrito.');
-    };
-
-    // Función para guardar el estado actual del carrito
-    const saveCart = () => {
-        localStorage.setItem('shoppingCart', JSON.stringify(cart));
-        updateCartBadge(); 
-    };
-
-    // Calcula y actualiza el precio total en la página
-    const updateCartTotal = () => {
-        // La verificación de cartTotalPriceEl ya se hizo al inicio
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        cartTotalPriceEl.textContent = `$${total.toFixed(2)}`;
-    };
-
-    // Función principal para dibujar/renderizar el carrito en la página
-    const renderCart = () => {
-        cartItemsContainer.innerHTML = ''; // Limpia la vista
-
-        if (cart.length === 0) {
-            cartItemsContainer.classList.remove('cart-items-list'); 
-            // Ruta a PaginaWeb.html (asumiendo que está en el directorio padre o raíz)
-            cartItemsContainer.innerHTML = '<p class="cart-empty-msg">Tu carrito está vacío. <a href="../PaginaWeb.html">¡Ve a por algo delicioso!</a></p>';
-            cartFooter.style.display = 'none'; // Oculta el pie si no hay productos
-        } else {
-            cartItemsContainer.classList.add('cart-items-list');
-            cartFooter.style.display = 'block'; // Muestra el pie
-            
-            cart.forEach(item => {
-                const itemTotalPrice = (item.price * item.quantity).toFixed(2);
-                const description = item.description || 'Delicioso pollo, caliente y listo.'; 
-
-                const cartItemEl = document.createElement('div');
-                cartItemEl.classList.add('cart-item-page'); 
-                
-                // HTML inyectado que usa las clases CSS Grid
-                cartItemEl.innerHTML = `
-                    <div class="item-details">
-                        <h4>${item.name}</h4>
-                        <p>${description}</p>
-                    </div>
-
-                    <div class="item-quantity-controls">
-                        <button class="btn-decrease" data-id="${item.id}">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="btn-increase" data-id="${item.id}">+</button>
-                    </div>
-
-                    <span class="item-price-page">$${itemTotalPrice}</span>
-                    
-                    <button class="remove-item-btn" data-id="${item.id}">🗑️</button>
-                `;
-                cartItemsContainer.appendChild(cartItemEl);
-            });
-            updateCartTotal();
-        }
-    };
-
-    // Manejador de eventos para los botones (+, -, 🗑️)
-    cartItemsContainer.addEventListener('click', (e) => {
-        const id = e.target.dataset.id;
-        if (!id) return;
-
-        const productIndex = cart.findIndex(item => item.id === id);
-        if (productIndex === -1) return;
-
-        if (e.target.classList.contains('btn-increase')) {
-            cart[productIndex].quantity++;
-        } else if (e.target.classList.contains('btn-decrease')) {
-            cart[productIndex].quantity--;
-            if (cart[productIndex].quantity === 0) {
-                cart.splice(productIndex, 1);
-            }
-        } else if (e.target.classList.contains('remove-item-btn')) { 
-            cart.splice(productIndex, 1);
-        }
+    if (cart.length === 0) {
+        cartItemsSummaryEl.innerHTML = '<p class="cart-empty-msg">No hay productos en tu carrito.</p>';
+        summaryProductsCostEl.textContent = `$0.00`;
+        summaryTotalPriceEl.textContent = `$0.00`;
         
-        saveCart();  
-        renderCart(); 
-    });
+        // Ocultar/Deshabilitar botón de pago si no hay productos
+        document.getElementById('btn-hacer-pedido').disabled = true;
 
-    // Dibuja el carrito al cargar
-    renderCart();
-});
+    } else {
+        document.getElementById('btn-hacer-pedido').disabled = false;
+        
+        // Calcular el subtotal (Costo de productos)
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        summaryProductsCostEl.textContent = `$${subtotal.toFixed(2)}`;
+        
+        // Valores fijos de ejemplo para el resumen (puedes ajustarlos)
+        const deliveryCost = 9.90;
+        const serviceFee = 18.90;
+        
+        const finalTotal = subtotal + deliveryCost + serviceFee;
+        summaryTotalPriceEl.textContent = `$${finalTotal.toFixed(2)}`;
+
+
+        // Renderizar la lista simplificada de productos
+        cart.forEach(item => {
+            const productLineEl = document.createElement('p');
+            // Muestra solo cantidad y nombre, similar a la referencia
+            productLineEl.textContent = `${item.quantity}x ${item.name}`; 
+            cartItemsSummaryEl.appendChild(productLineEl);
+        });
+        
+        // Nota: Mantenemos el código de updateCartTotal por si se usa en otro lugar, 
+        // pero en esta versión de checkout, el cálculo principal se hace aquí.
+    }
+};
+
+// ... todo el código JS restante (event listeners para +, -, 🗑️, etc.) ...
+
+// Al final de tu archivo JS, debes asegurarte de que los event listeners
+// para modificar el carrito sigan funcionando, ya que necesitas 
+// actualizar el localStorage y luego volver a llamar a renderCart()
+// para que el resumen se actualice.
+
+// Nota: Los botones de aumentar/disminuir/eliminar ya no están en el HTML de Checkout.html,
+// por lo que los event listeners asociados a ellos no se dispararán, lo cual es correcto
+// si esta página es solo para resumen final y no para edición de cantidades.

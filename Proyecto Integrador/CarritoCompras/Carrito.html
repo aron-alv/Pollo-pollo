@@ -1,45 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Carrito de Compras - Pollo Express</title>
-    
-        <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cart.css"> 
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Resumen de Pedido - Pollo Express</title>
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/cart.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
 <body>
-    
-    <header class="header">
-        <div class="container">
-                        <a href="../PaginaWeb.html" class="logo">
-                Pollo Express 🍗
-            </a>
-            <nav class="nav-main">
-                                <a href="../PaginaWeb.html" class="btn btn-primary">← Volver al Menú</a>
-            </nav>
-        </div>
-    </header>
+    
+    <header class="header">
+        <div class="container">
+            <a href="../PaginaWeb.html" class="logo">
+                Pollo Express 🍗
+            </a>
+            <nav class="nav-main">
+                <a href="../PaginaWeb.html" class="nav-link">← Volver</a>
+            </nav>
+        </div>
+    </header>
 
-    <main class="cart-page-container">
-        <h1>🛒 Tu Carrito de Compras</h1>
-        
-        <div id="cart-items-page">
-            <p class="cart-empty-msg">Cargando tu carrito...</p>
-        </div>
+    <main class="checkout-page-container">
+        <div class="checkout-container">
+            
+            <section class="checkout-left-column">
+                
+                <div class="checkout-card">
+                    <div class="card-header">
+                        <h2>Dirección de entrega</h2>
+                        <button class="btn-change">Cambiar</button>
+                    </div>
+                    <p class="delivery-address">81000, Guasave Centro, Guasave, Sin, México</p>
+                    <div class="input-group">
+                        <label for="instructions">Instrucciones de entrega (opcional)</label>
+                        <input type="text" id="instructions" placeholder="Ej: Llamar al llegar, depto 3A, etc.">
+                    </div>
+                </div>
 
-        <div id="cart-footer-page" class="cart-footer" style="display: none;">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cart-total-price-page">$0.00</span>
-            </div>
-            <a href="#" class="btn btn-primary btn-checkout">Proceder al Pago</a>
-        </div>
-    </main>
+                <div class="checkout-card product-summary">
+                    <div class="card-item-summary">
+                        <span id="store-name">Pollo Express</span>
+                        <span id="product-count">1 producto</span>
+                    </div>
+                    <div id="cart-items-summary">
+                        <p class="cart-empty-msg">Cargando productos...</p>
+                    </div>
+                    <p class="estimated-delivery">Entrega estimada: <span id="delivery-time">22 - 42 min</span></p>
+                </div>
 
-        <script src="js/carrito.js"></script>
+                <div class="checkout-card payment-method">
+                    <div class="card-header">
+                        <h2>Método de pago</h2>
+                        <button class="btn-change">Cambiar</button>
+                    </div>
+                    <div class="payment-option selected">
+                        <span class="payment-icon">💵</span>
+                        <span>Efectivo</span>
+                    </div>
+                </div>
+
+                <div class="checkout-card coupon-tip">
+                    <div class="card-header">
+                        <span class="payment-icon">🏷️</span>
+                        <h2>Cupón:</h2>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                    
+                    <div class="tip-section">
+                        <h2>Añade una propina</h2>
+                        <p class="tip-note">El 100% de esta recompensa va para tu Repartidor</p>
+                        <div class="tip-options">
+                            <button class="tip-btn">6%</button>
+                            <button class="tip-btn">11%</button>
+                            <button class="tip-btn">17%</button>
+                            <button class="tip-btn selected">Otro</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="checkout-right-column">
+                <div class="checkout-card summary-card">
+                    <h2>Resumen</h2>
+                    <div class="summary-details">
+                        <div class="summary-line">
+                            <span>Costo de productos</span>
+                            <span id="summary-products-cost">$244.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Costo de envío</span>
+                            <span id="summary-delivery-cost">$9.90</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Tarifa de Servicio</span>
+                            <span id="summary-service-fee">$18.90</span>
+                        </div>
+                        <div class="summary-line total-line">
+                            <span>Total</span>
+                            <span id="summary-total-price">$272.80</span>
+                        </div>
+                    </div>
+                    <p class="cost-note"><a>Ver detalle</a> | <a href="#">Así funcionan nuestros costos</a></p>
+                    
+                    <button class="btn btn-primary btn-checkout-final" id="btn-hacer-pedido">Hacer Pedido</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/carrito.js"></script>
 </body>
 </html>
