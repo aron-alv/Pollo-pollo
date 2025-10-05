@@ -62,13 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-  
+    // --- Botón de Facebook (Simplificado) ---
     const facebookButton = document.getElementById('btnFacebookLogin');
     if (facebookButton) {
         facebookButton.addEventListener('click', async () => {
             const provider = new FacebookAuthProvider();
             if (isMobile()) {
-              
+                // En móvil, usamos la redirección. Firebase se encargará de intentar abrir la app.
                 await signInWithRedirect(auth, provider);
             } else {
                 // En computadora, usamos el pop-up
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-  
+    // --- Botón de Teléfono ---
 const telefonoButton = document.getElementById('btnTelefonoLogin');
 if (telefonoButton) {
     telefonoButton.addEventListener('click', () => {
